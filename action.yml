@@ -13,5 +13,5 @@ runs:
     run: echo "::notice file=action.yml,line=13,title=This is an example::I m created by this line"
   - id: config
     run: |
-      $VERSION=$(jq -r .version package.json)
+      VERSION=$(jq -r .version package.json)
       echo "tagged-version=$VERSION-ekt" >> $GITHUB_OUTPUT
