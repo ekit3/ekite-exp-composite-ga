@@ -1,0 +1,19 @@
+name: 'Ekite composite example'
+description: 'Return a tagged version'
+outputs:
+tagged-version:
+description: "Ekite Tagged version"
+value: ${{ steps.tag-version.outputs.tagged-version }}
+runs:
+using: "composite"
+steps:
+- name: Checkout
+  uses: actions/checkout@v3
+- id: config
+  shell: bash
+  run: |
+  VERSION=$(jq -r .version package.json)
+  echo "tagged-version=$VERSION-ekt" >> $GITHUB_OUTPUT
+- name: Notice
+  run: echo "::notice file=exemple.yml,line=18,title=This is an example::version created ${{ steps.config.outputs.tagged-version }}"
+  shell: bash
