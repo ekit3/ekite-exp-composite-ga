@@ -9,11 +9,11 @@ runs:
   steps:
   - name: Checkout
     uses: actions/checkout@v3
-  - id: config
+  - id: tag-version
     shell: bash
     run: |
       VERSION=$(jq -r .version package.json)
       echo "tagged-version=$VERSION-ekt" >> $GITHUB_OUTPUT
   - name: Notice
-    run: echo "::notice file=exemple.yml,line=18,title=This is an example::version created ${{ steps.config.outputs.tagged-version }}"
+    run: echo "::notice file=exemple.yml,line=18,title=This is an example::version created ${{ steps.tag-version.outputs.tagged-version }}"
     shell: bash
