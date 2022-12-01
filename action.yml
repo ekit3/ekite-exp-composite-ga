@@ -7,13 +7,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-  - name: Checkout
-    uses: actions/checkout@v3
   - id: tag-version
     shell: bash
     run: |
       VERSION=$(jq -r .version package.json)
-      echo "tagged-version=$VERSION-ekt" >> $GITHUB_OUTPUT
-  - name: Notice
-    run: echo "::notice file=exemple.yml,line=18,title=This is an example::version created ${{ steps.tag-version.outputs.tagged-version }}"
-    shell: bash
+      echo "tagged-version=$VERSION-ekite" >> $GITHUB_OUTPUT
