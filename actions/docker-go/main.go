@@ -13,9 +13,9 @@ func main() {
 	command := "echo \"lenght=" + strconv.Itoa(len(arg1)) + "\" >> $GITHUB_OUTPUT"
 	cmd := exec.Command("sh", "-c", command)
 	err := cmd.Run()
-	fmt.Println("exec cmd " + command)
+	fmt.Println("running cmd: " + command)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("End success" + arg1)
+	fmt.Println("End success")
 }
