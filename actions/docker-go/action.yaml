@@ -1,0 +1,15 @@
+name: 'Get name lenght'
+description: 'Greet someone and record the time'
+inputs:
+  name:  
+    description: 'name'
+    required: true
+    default: 'Bob'
+outputs:
+  lenght:
+    description: 'Lenght of the name'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.name }}
