@@ -7,10 +7,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: run docker go action
-        uses: ./actions/docker-go
+      - name: run composite get action
+        uses: ./actions/composites/get-version
         id: test
-        with:
-          name: 'Yoh'
       - name: output
-        run: echo "${{ steps.test.outputs.lenght }}"
+        run: echo "${{ steps.test.outputs.tagged-version }}"
